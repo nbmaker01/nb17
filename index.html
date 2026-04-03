@@ -23,23 +23,23 @@
     <!-- ====== 바닥 ====== -->
     <a-plane 
       rotation="-90 0 0" 
-      width="800" 
-      height="800" 
+      width="2000" 
+      height="2000" 
       color="#7BC8A4">
     </a-plane>
 
     <!-- ====== 조명 설정 ====== -->
-    <a-entity light="type: ambient; intensity: 1"></a-entity>
+    <a-entity light="type: ambient; intensity: 1.2"></a-entity>
     <a-entity 
-      light="type: directional; intensity: 2" 
-      position="20 40 30">
+      light="type: directional; intensity: 2.5" 
+      position="50 100 80">
     </a-entity>
 
     <!-- ====== 카메라 + 이동 컨트롤 ====== -->
     <a-entity 
       id="player"
-      position="0 30 200"  <!-- 매우 큰 모델에 맞게 멀리 배치 -->
-      movement-controls="speed: 1"
+      position="0 200 1500"  <!-- 엄청 커진 모델에 맞춰 매우 멀리 배치 -->
+      movement-controls="speed: 5"
       wasd-controls
       look-controls>
       
@@ -50,11 +50,11 @@
       <a-entity laser-controls="hand: right"></a-entity>
     </a-entity>
 
-    <!-- ====== 3D 모델 (집 + 나무 더 크게) ====== -->
+    <!-- ====== 3D 모델 (집 + 나무 100배 추가 확대) ====== -->
     <a-entity 
       gltf-model="#model"
-      position="0 0 -50"
-      scale="200 200 200"   <!-- 🔥 더 크게 확대 -->
+      position="0 0 -300"
+      scale="10000 10000 10000"   <!-- 🔥 기존보다 100배 더 크게 -->
       rotation="0 30 0">
     </a-entity>
 
