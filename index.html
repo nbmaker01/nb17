@@ -1,2 +1,68 @@
-/
-/
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <title>WebXR A-Frame GLB Example</title>
+  <!-- A-Frame 라이브러리 불러오기 -->
+  <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
+</head>
+
+<body>
+  <!-- A-Frame 씬 시작 (VR 지원 활성화) -->
+  <a-scene vr-mode-ui="enabled: true">
+
+    <!-- ====== 자산(Assets) 미리 로드 ====== -->
+    <a-assets>
+      <!-- GLB 모델 로드 -->
+      <a-asset-item id="model" src="model.glb"></a-asset-item>
+    </a-assets>
+
+    <!-- ====== 하늘 (배경) ====== -->
+    <a-sky color="#87CEEB"></a-sky>
+
+    <!-- ====== 바닥 ====== -->
+    <a-plane 
+      rotation="-90 0 0" 
+      width="50" 
+      height="50" 
+      color="#7BC8A4">
+    </a-plane>
+
+    <!-- ====== 조명 설정 ====== -->
+    <!-- 전체 밝기 -->
+    <a-entity light="type: ambient; intensity: 0.5"></a-entity>
+    
+    <!-- 방향성 빛 -->
+    <a-entity 
+      light="type: directional; intensity: 1" 
+      position="5 10 7">
+    </a-entity>
+
+    <!-- ====== 카메라 + 이동 컨트롤 ====== -->
+    <!-- WASD 키 + 마우스 이동 가능 -->
+    <a-entity 
+      id="player"
+      position="0 1.6 5"
+      movement-controls="speed: 0.1"
+      wasd-controls
+      look-controls>
+      
+      <!-- 카메라 -->
+      <a-camera></a-camera>
+
+      <!-- VR 컨트롤러 (좌/우) -->
+      <a-entity laser-controls="hand: left"></a-entity>
+      <a-entity laser-controls="hand: right"></a-entity>
+    </a-entity>
+
+    <!-- ====== 3D 모델 배치 ====== -->
+    <a-entity 
+      gltf-model="#model"
+      position="0 0 -3"     <!-- 앞쪽 중앙 -->
+      scale="2 2 2"         <!-- 적당히 크게 -->
+      rotation="0 30 0">    <!-- 약간 회전 -->
+    </a-entity>
+
+  </a-scene>
+</body>
+</html>
